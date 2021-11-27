@@ -1,0 +1,417 @@
+{
+  "people": [
+    {
+      "id": "RD",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/Robert_Downey_Jr_2014_Comic_Con_%28cropped%29.jpg/452px-Robert_Downey_Jr_2014_Comic_Con_%28cropped%29.jpg",
+      "name": "Robert Downey Jr.",
+      "movies": [
+        "IM",
+        "IMII",
+        "TA"
+      ]
+    },
+    {
+      "id": "TH",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Terrence_Howard_-_Monte-Carlo.jpg/434px-Terrence_Howard_-_Monte-Carlo.jpg",
+      "name": "Terrence Howard",
+      "movies": [
+        "IM"
+      ]
+    },
+    {
+      "id": "JB",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Jeff_Bridges_by_Gage_Skidmore_3.jpg/466px-Jeff_Bridges_by_Gage_Skidmore_3.jpg",
+      "name": "Jeff Bridges",
+      "movies": [
+        "IM"
+      ]
+    },
+    {
+      "id": "ST",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Shaun_Toub_2011_cropped.jpg/418px-Shaun_Toub_2011_cropped.jpg",
+      "name": "Shaun Toub",
+      "movies": [
+        "IM"
+      ]
+    },
+    {
+      "id": "GP",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/GwynethPaltrowByAndreaRaffin2011.jpg/540px-GwynethPaltrowByAndreaRaffin2011.jpg",
+      "name": "Gwyneth Paltrow",
+      "movies": [
+        "IM",
+        "IMII"
+      ]
+    },
+    {
+      "id": "EN",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Ed_Norton_Shankbone_Metropolitan_Opera_2009.jpg/444px-Ed_Norton_Shankbone_Metropolitan_Opera_2009.jpg",
+      "name": "Edward Norton",
+      "movies": [
+        "TIH"
+      ]
+    },
+    {
+      "id": "LT",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Liv_Tyler_%2829566238128%29_%28cropped%29.jpg/410px-Liv_Tyler_%2829566238128%29_%28cropped%29.jpg",
+      "name": "Liv Tyler",
+      "movies": [
+        "TIH"
+      ]
+    },
+    {
+      "id": "TR",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Tim_Roth_by_Gage_Skidmore_2.jpg/466px-Tim_Roth_by_Gage_Skidmore_2.jpg",
+      "name": "Tim Roth",
+      "movies": [
+        "TIH"
+      ]
+    },
+    {
+      "id": "TBN",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Tim_Blake_Nelson_2016.jpg/468px-Tim_Blake_Nelson_2016.jpg",
+      "name": "Tim Blake Nelson",
+      "movies": [
+        "TIH"
+      ]
+    },
+    {
+      "id": "TB",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Ty_Burrell_3_2014.jpg/426px-Ty_Burrell_3_2014.jpg",
+      "name": "Ty Burrell",
+      "movies": [
+        "TIH"
+      ]
+    },
+    {
+      "id": "WH",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/History_of_Violence_002_%287271227040%29.jpg/402px-History_of_Violence_002_%287271227040%29.jpg",
+      "name": "William Hurt",
+      "movies": [
+        "TIH"
+      ]
+    },
+    {
+      "id": "DC",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Don_Cheadle_in_2019_at_the_public_party.jpg/640px-Don_Cheadle_in_2019_at_the_public_party.jpg",
+      "name": "Don Cheadle",
+      "movies": [
+        "IMII"
+      ]
+    },
+    {
+      "id": "SJ",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Scarlett_Johansson_by_Gage_Skidmore_2_%28cropped%2C_2%29.jpg/410px-Scarlett_Johansson_by_Gage_Skidmore_2_%28cropped%2C_2%29.jpg",
+      "name": "Scarlett Johansson",
+      "movies": [
+        "IMII",
+        "TA"
+      ]
+    },
+    {
+      "id": "SR",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Jojo_Rabbit_10_%2848810047303%29.jpg/510px-Jojo_Rabbit_10_%2848810047303%29.jpg",
+      "name": "Sam Rockwell",
+      "movies": [
+        "IMII"
+      ]
+    },
+    {
+      "id": "MR",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Mickey_Rourke_10_December_2010_%28cropped%29.jpeg/478px-Mickey_Rourke_10_December_2010_%28cropped%29.jpeg",
+      "name": "Mickey Rourke",
+      "movies": [
+        "IMII"
+      ]
+    },
+    {
+      "id": "SLJ",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Samuel_L._Jackson_2019_by_Glenn_Francis.jpg/426px-Samuel_L._Jackson_2019_by_Glenn_Francis.jpg",
+      "name": "Samuel L. Jackson",
+      "movies": [
+        "IMII"
+      ]
+    },
+    {
+      "id": "CH",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Chris_Hemsworth_by_Gage_Skidmore_2_%28cropped%29.jpg/468px-Chris_Hemsworth_by_Gage_Skidmore_2_%28cropped%29.jpg",
+      "name": "Chris Hemsworth",
+      "movies": [
+        "T",
+        "TA"
+      ]
+    },
+    {
+      "id": "NP",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Natalie_Portman_%2848470988352%29_%28cropped%29.jpg/456px-Natalie_Portman_%2848470988352%29_%28cropped%29.jpg",
+      "name": "Natalie Portman",
+      "movies": [
+        "T"
+      ]
+    },
+    {
+      "id": "TH",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Tom_Hiddleston_%2836109110291%29_%28cropped%29.jpg/488px-Tom_Hiddleston_%2836109110291%29_%28cropped%29.jpg",
+      "name": "Tom Hiddleston",
+      "movies": [
+        "T",
+        "TA"
+      ]
+    },
+    {
+      "id": "SS",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Stellan_Skarsg%C3%A5rd_at_the_2017_Berlinalevds.jpg/496px-Stellan_Skarsg%C3%A5rd_at_the_2017_Berlinalevds.jpg",
+      "name": "Stellan Skarsgård",
+      "movies": [
+        "T"
+      ]
+    },
+    {
+      "id": "CF",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Colm_Feore_2013_%28cropped%29.jpg/446px-Colm_Feore_2013_%28cropped%29.jpg",
+      "name": "Colm Feore",
+      "movies": [
+        "T"
+      ]
+    },
+    {
+      "id": "RS",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Ray_Stevenson_March_18%2C_2014_%28cropped%29.jpg/640px-Ray_Stevenson_March_18%2C_2014_%28cropped%29.jpg",
+      "name": "Ray Stevenson",
+      "movies": [
+        "T"
+      ]
+    },
+    {
+      "id": "IE",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Idris_Elba_2014.jpg/444px-Idris_Elba_2014.jpg",
+      "name": "Idris Elba",
+      "movies": [
+        "T"
+      ]
+    },
+    {
+      "id": "KD",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/0/02/Kat_Dennings_Thor_2_cropped.png",
+      "name": "Kat Dennings",
+      "movies": [
+        "T"
+      ]
+    },
+    {
+      "id": "RR",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Rene_Russo_1996.jpg/590px-Rene_Russo_1996.jpg",
+      "name": "Rene Russo",
+      "movies": [
+        "T"
+      ]
+    },
+    {
+      "id": "AH",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/AnthonyHopkins10TIFF.jpg/504px-AnthonyHopkins10TIFF.jpg",
+      "name": "Anthony Hopkins",
+      "movies": [
+        "T"
+      ]
+    },
+    {
+      "id": "CE",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/3/33/Mark_Kassen%2C_Tony_C%C3%A1rdenas_and_Chris_Evans_%28cropped%29.jpg",
+      "name": "Chris Evans",
+      "movies": [
+        "CA",
+        "TA"
+      ]
+    },
+    {
+      "id": "JR",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Tommy_Lee_Jones_2017.jpg/500px-Tommy_Lee_Jones_2017.jpg",
+      "name": "Jeremy Renner",
+      "movies": [
+        "T",
+        "TA"
+      ]
+    },
+    {
+      "id": "TLJ",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Tommy_Lee_Jones_2017.jpg/500px-Tommy_Lee_Jones_2017.jpg",
+      "name": "Tommy Lee Jones",
+      "movies": [
+        "CA"
+      ]
+    },
+    {
+      "id": "HH",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/MJK_08925_Hugo_Weaving_%28Berlinale_2018%29_bw43.jpg/480px-MJK_08925_Hugo_Weaving_%28Berlinale_2018%29_bw43.jpg",
+      "name": "Hugo Weaving",
+      "movies": [
+        "CA"
+      ]
+    },
+    {
+      "id": "HA",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/HVFFLondon2017Cap-ALS-29_%2835183142201%29_Cropped.jpg/424px-HVFFLondon2017Cap-ALS-29_%2835183142201%29_Cropped.jpg",
+      "name": "Hayley Atwell",
+      "movies": [
+        "CA"
+      ]
+    },
+    {
+      "id": "SS",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Sebastian_Stan_by_Gage_Skidmore_2_%28cropped%29.jpg/462px-Sebastian_Stan_by_Gage_Skidmore_2_%28cropped%29.jpg",
+      "name": "Sebastian Stan",
+      "movies": [
+        "CA"
+      ]
+    },
+    {
+      "id": "DC",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Dominic_Cooper_by_Gage_Skidmore.jpg/398px-Dominic_Cooper_by_Gage_Skidmore.jpg",
+      "name": "Dominic Cooper",
+      "movies": [
+        "CA"
+      ]
+    },
+    {
+      "id": "NM",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Neal_McDonough_by_Gage_Skidmore.jpg/446px-Neal_McDonough_by_Gage_Skidmore.jpg",
+      "name": "Neal McDonough",
+      "movies": [
+        "CA"
+      ]
+    },
+    {
+      "id": "ST",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Stanley_Tucci_2017_Berlinale.jpg/454px-Stanley_Tucci_2017_Berlinale.jpg",
+      "name": "Stanley Tucci",
+      "movies": [
+        "CA"
+      ]
+    },
+    {
+      "id": "DL",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/NABJ_2013_-_Orlando_%289451924600%29.jpg/466px-NABJ_2013_-_Orlando_%289451924600%29.jpg",
+      "name": "Derek Luke",
+      "movies": [
+        "CA"
+      ]
+    },
+    {
+      "id": "MR",
+      "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Mark_Ruffalo_%2836201774756%29_%28cropped%29.jpg/480px-Mark_Ruffalo_%2836201774756%29_%28cropped%29.jpg",
+      "name": "Mark Ruffalo",
+      "movies": [
+        "TA"
+      ]
+    }
+  ],
+  "movies": [
+    {
+      "id": "IM",
+      "name": "Iron Man",
+      "release": "May 2, 2008",
+      "img": "https://upload.wikimedia.org/wikipedia/en/0/02/Iron_Man_%282008_film%29_poster.jpg",
+      "starring": [
+        "RD",
+        "TH",
+        "JB",
+        "ST",
+        "GP"
+      ]
+    },
+    {
+      "id": "TIH",
+      "name": "The Incredible Hulk",
+      "release": "June 8, 2008",
+      "img": "https://upload.wikimedia.org/wikipedia/en/f/f0/The_Incredible_Hulk_%28film%29_poster.jpg",
+      "starring": [
+        "EN",
+        "LT",
+        "TR",
+        "TBN",
+        "TB",
+        "WH"
+      ]
+    },
+    {
+      "id": "IMII",
+      "name": "Iron Man II",
+      "release": "April 26, 2010",
+      "img": "https://upload.wikimedia.org/wikipedia/en/e/ed/Iron_Man_2_poster.jpg",
+      "starring": [
+        "RD",
+        "GP",
+        "DC",
+        "SJ",
+        "SR",
+        "MR",
+        "SLJ"
+      ]
+    },
+    {
+      "id": "T",
+      "name": "Thor",
+      "release": "April 17, 2011",
+      "img": "https://upload.wikimedia.org/wikipedia/en/9/95/Thor_%28film%29_poster.jpg",
+      "starring": [
+        "CH",
+        "NP",
+        "TH",
+        "SS",
+        "CF",
+        "RS",
+        "IE",
+        "KD",
+        "RR",
+        "AH"
+      ]
+    },
+    {
+      "id": "CA",
+      "name": "Captain America",
+      "release": "July 19, 2011",
+      "img": "https://upload.wikimedia.org/wikipedia/en/3/37/Captain_America_The_First_Avenger_poster.jpg",
+      "starring": [
+        "CE",
+        "TLJ",
+        "HH",
+        "HA",
+        "SS",
+        "DC",
+        "NM",
+        "DL",
+        "ST"
+      ]
+    },
+    {
+      "id": "TA",
+      "name": "The Avengers",
+      "release": "April 17, 2011",
+      "img": "https://upload.wikimedia.org/wikipedia/en/8/8a/The_Avengers_%282012_film%29_poster.jpg",
+      "starring": [
+        "RD",
+        "CE",
+        "MR",
+        "CH",
+        "SJ",
+        "JR",
+        "TH"
+      ]
+    }
+  ]
+}
+   
+    
+    
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+
