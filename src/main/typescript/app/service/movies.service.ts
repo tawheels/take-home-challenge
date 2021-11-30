@@ -5,18 +5,17 @@ import { Router } from '@angular/router';
 
 import { Message, MessageType, MessageService } from './message.service';
 
-export class Movie {
+export class Base {
   id!: string;
   img?: string;
   name!: string;
+}
+export class Movie extends Base {
   release!:string;
   starring!: string[];
 }
 
-export class Person {
-  id!: string;
-  img?: string;
-  name!: string;
+export class Person extends Base {
   movies!: string[];
 }
 

@@ -1,7 +1,7 @@
 package net.ggl.rest.json;
 
 import static io.restassured.RestAssured.given;
-import static org.hamcrest.Matchers.contains;
+import static org.hamcrest.Matchers.containsString;
 
 import org.junit.jupiter.api.Test;
 
@@ -13,10 +13,10 @@ public class MovieResourceTest {
     @Test
     public void testMovieEndpoint() {
         given()
-          .when().get("/movies")
+          .when().get("/service/movies")
           .then()
              .statusCode(200)
-             .body(contains("Iron Man"));
+             .body(containsString("Iron Man"));
     }
 
 }

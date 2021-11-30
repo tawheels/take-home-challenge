@@ -5,6 +5,7 @@ import { Component } from '@angular/core';
   template: `
   <mat-toolbar>
      <span>Movies</span>
+     <movie-search></movie-search>
   </mat-toolbar>
   <router-outlet></router-outlet>
   
