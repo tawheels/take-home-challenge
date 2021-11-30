@@ -62,7 +62,14 @@ export class MoviesService {
     return throwError( newError );
   }
 
-  serviceCall<T>(method: string, params: any) {
+  serviceGet<T>(method: string, params: any) {
+
+    return this.http.get<T>(method, params).pipe(
+      tap(res => this.checkForMessage(res)),
+      catchError(error => this.handleError(error)));
+  }
+
+  servicePost<T>(method: string, params: any) {
 
     return this.http.post<T>(method, params).pipe(
       tap(res => this.checkForMessage(res)),

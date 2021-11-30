@@ -54,7 +54,7 @@ export class SearchComponent {
   filterChoicesObservable(searchText: string): Observable<Base[]> {
     let _filterChoicesObservable = new Observable<Base[]>((observer) => {
 
-      this.moviesService.serviceCall<Base[]>("/service/search", { search: '', baseClass: '' }).subscribe((response: any) => {
+      this.moviesService.servicePost<Base[]>("/service/search", { query: searchText, baseClass: 'All' }).subscribe((response: any) => {
         observer.next(response['choices']);
       });
     });

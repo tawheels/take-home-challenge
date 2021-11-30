@@ -13,7 +13,7 @@ export class MoviesList implements Resolve<any> {
   }
 
   resolve(): Observable<any> {
-    return this.moviesService.serviceCall<Movie[]>("/service/movies", {});
+    return this.moviesService.serviceGet<Movie[]>("/service/movies", {});
   }
 }
 
@@ -23,7 +23,7 @@ export class PeopleList implements Resolve<any> {
   }
 
   resolve(): Observable<any> {
-    return this.moviesService.serviceCall<Person[]>("/service/people", {});
+    return this.moviesService.serviceGet<Person[]>("/service/people", {});
   }
 }
 
