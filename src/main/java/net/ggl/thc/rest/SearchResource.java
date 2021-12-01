@@ -1,4 +1,4 @@
-package net.ggl.rest.json;
+package net.ggl.thc.rest;
 
 import java.util.List;
 
@@ -6,6 +6,10 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 
 import org.jboss.logging.Logger;
+
+import net.ggl.thc.crud.MoviesLoader;
+import net.ggl.thc.pojo.Base;
+import net.ggl.thc.pojo.Search;
 
 @Path("/service/search")
 public class SearchResource {

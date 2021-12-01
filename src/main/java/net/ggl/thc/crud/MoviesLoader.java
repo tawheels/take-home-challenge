@@ -1,4 +1,4 @@
-package net.ggl.rest.json;
+package net.ggl.thc.crud;
 
 import java.io.InputStream;
 import java.nio.file.Paths;
@@ -26,6 +26,12 @@ import org.apache.lucene.store.FSDirectory;
 import org.jboss.logging.Logger;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+
+import net.ggl.thc.pojo.Base;
+import net.ggl.thc.pojo.Movie;
+import net.ggl.thc.pojo.Movies;
+import net.ggl.thc.pojo.Person;
+import net.ggl.thc.pojo.Search;
 
 public class MoviesLoader {
   public static String idKey = "id";

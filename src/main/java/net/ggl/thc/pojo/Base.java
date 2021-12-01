@@ -1,4 +1,4 @@
-package net.ggl.rest.json;
+package net.ggl.thc.pojo;
 
 public class Base {
   String id;

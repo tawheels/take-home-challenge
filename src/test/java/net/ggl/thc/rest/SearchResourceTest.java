@@ -1,4 +1,4 @@
-package net.ggl.rest.json;
+package net.ggl.thc.rest;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.containsString;

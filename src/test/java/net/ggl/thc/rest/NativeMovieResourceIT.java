@@ -1,4 +1,4 @@
-package net.ggl.rest.json;
+package net.ggl.thc.rest;
 
 import io.quarkus.test.junit.NativeImageTest;
 

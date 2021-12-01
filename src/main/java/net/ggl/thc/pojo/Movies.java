@@ -1,4 +1,4 @@
-package net.ggl.rest.json;
+package net.ggl.thc.pojo;
 
 import java.util.List;
 

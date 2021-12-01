@@ -1,4 +1,4 @@
-package net.ggl.rest.json;
+package net.ggl.thc.rest;
 
 import java.util.List;
 
@@ -8,6 +8,9 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 
 import org.jboss.resteasy.annotations.jaxrs.PathParam;
+
+import net.ggl.thc.crud.MoviesLoader;
+import net.ggl.thc.pojo.Movie;
 
 @Path("/service/movies")
 public class MovieResource {
@@ -32,7 +35,7 @@ public class MovieResource {
 
   @DELETE
   public List<Movie> delete(Movie movie) {
-    list().removeIf(existingMovie -> existingMovie.name.contentEquals(movie.name));
+    list().removeIf(existingMovie -> existingMovie.getName().contentEquals(movie.getName()));
     return list();
   }
 }
