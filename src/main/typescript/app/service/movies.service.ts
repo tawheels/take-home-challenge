@@ -12,11 +12,13 @@ export class Base {
 }
 export class Movie extends Base {
   release!:string;
-  starring!: string[];
+  starringIds!: string[];
+  starring?: Person[];
 }
 
 export class Person extends Base {
-  movies!: string[];
+  movieIds!: string[];
+  movies?: Movie[];
 }
 
 export class Response extends Message {

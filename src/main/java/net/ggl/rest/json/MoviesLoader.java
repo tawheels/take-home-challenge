@@ -17,7 +17,7 @@ import org.apache.lucene.index.IndexReader;
 import org.apache.lucene.index.IndexWriter;
 import org.apache.lucene.index.IndexWriterConfig;
 import org.apache.lucene.index.IndexWriterConfig.OpenMode;
-import org.apache.lucene.queryparser.classic.QueryParser;
+import org.apache.lucene.queryparser.simple.SimpleQueryParser;
 import org.apache.lucene.search.IndexSearcher;
 import org.apache.lucene.search.Query;
 import org.apache.lucene.search.ScoreDoc;
@@ -32,14 +32,17 @@ public class MoviesLoader {
   public static String baseClassKey = "baseClass";
   public static String nameKey = "name";
   private static final Logger log = Logger.getLogger(MoviesLoader.class);
-  
+
   Movies movies;
 
   public static MoviesLoader movieLoader;
   IndexSearcher searcher;
   Analyzer analyzer;
   String indexPath = "/tmp/lucene";
-  HashMap<String, Base> allBase; 
+  HashMap<String, Base> allBase;
+  HashMap<String, Person> allPerson;
+  HashMap<String, Movie> allMovie;
+
   public static MoviesLoader instance() {
     if (movieLoader == null) {
       movieLoader = new MoviesLoader();
@@ -66,16 +69,40 @@ public class MoviesLoader {
         movies = objectMapper.readValue(fileStream, Movies.class);
         fileStream.close();
         allBase = new HashMap<String, Base>();
-        
+        allMovie = new HashMap<String, Movie>();
+        allPerson = new HashMap<String, Person>();
+
         Analyzer analyzer = new StandardAnalyzer();
         IndexWriterConfig iwc = new IndexWriterConfig(analyzer);
         iwc.setOpenMode(OpenMode.CREATE);
         IndexWriter writer = new IndexWriter(FSDirectory.open(Paths.get(indexPath)), iwc);
         for (Movie movie : movies.getMovies()) {
           indexBase(movie, writer);
+          allMovie.put(movie.getId(), movie);
         }
         for (Person person : movies.getPeople()) {
           indexBase(person, writer);
+          allPerson.put(person.getId(), person);
+          if (person.getMovieIds() != null && person.getMovieIds().size() > 0) {
+            ArrayList<Base> starredInMovies = new ArrayList<Base>();
+            person.setMovies(starredInMovies);
+            for (String movieId : person.getMovieIds()) {
+              Movie starredInMovie = allMovie.get(movieId);
+              if (starredInMovie != null) {
+                starredInMovies.add(new Base(starredInMovie));
+              }
+            }
+          }
+        }
+        for (Movie movie : movies.getMovies()) {
+          ArrayList<Base> starring = new ArrayList<Base>();
+          movie.setStarring(starring);
+          for (String personId : movie.getStarringIds()) {
+            Person person = allPerson.get(personId);
+            if (person != null) {
+              starring.add(new Base(person));
+            }
+          }
         }
         writer.flush();
         writer.close();
@@ -86,22 +113,28 @@ public class MoviesLoader {
     }
   }
 
-  public List<Base> search(String queryString) throws Exception {
+  public List<Base> search(Search search) throws Exception {
     if (searcher == null) {
       IndexReader reader = DirectoryReader.open(FSDirectory.open(Paths.get(indexPath)));
       searcher = new IndexSearcher(reader);
       analyzer = new StandardAnalyzer();
     }
-    ArrayList<Base> searchResults = new ArrayList<Base>();  
-    if (queryString != null && queryString.length() > 0) {
-      QueryParser parser = new QueryParser(nameKey, analyzer);
-      Query query = parser.parse(queryString);
+    ArrayList<Base> searchResults = new ArrayList<Base>();
+    String searchQuery = search.getQuery();
+    
+    if (searchQuery != null && searchQuery.length() > 0) {
+      if (!searchQuery.endsWith("*")) {
+        searchQuery = searchQuery + "*";
+      }
+      SimpleQueryParser parser = new SimpleQueryParser(analyzer, nameKey);
+      Query query = parser.parse(searchQuery);
       TopDocs results = searcher.search(query, 100);
       log.warn("Search results " + results.totalHits.value);
       for (ScoreDoc hit : results.scoreDocs) {
         Document doc = searcher.doc(hit.doc);
         Base thisBase = allBase.get((String) doc.get(idKey));
-        if (thisBase != null) {
+        if (thisBase != null && search.getBaseClass() != null && thisBase.getBaseClass() != null &&
+              (search.getBaseClass().equalsIgnoreCase("all") || search.getBaseClass().equalsIgnoreCase(thisBase.getBaseClass()))) {
           searchResults.add(thisBase);
         }
         else {
@@ -112,8 +145,16 @@ public class MoviesLoader {
     return searchResults;
   }
 
+  public Movie getMovie(String id) {
+    return allMovie.get(id);
+  }
+
   public List<Movie> getMovies() {
     return movies.getMovies();
+  }
+
+  public Person getPerson(String id) {
+    return allPerson.get(id);
   }
 
   public List<Person> getPeople() {

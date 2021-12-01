@@ -12,11 +12,9 @@ public class SearchResource {
   private static final Logger log = Logger.getLogger(SearchResource.class);
 
   @POST
-//  @Produces(MediaType.APPLICATION_JSON)
-//  @Consumes(MediaType.APPLICATION_JSON)
-  public List<Base> list(Search query) throws Exception {
-    log.warn("Search for query " + query.getQuery() + " baseClass: " + query.getBaseClass());
-    return MoviesLoader.instance().search(query.getQuery());
+  public List<Base> list(Search search) throws Exception {
+    log.warn("Search for query " + search.getQuery() + " baseClass: " + search.getBaseClass());
+    return MoviesLoader.instance().search(search);
   }
 
 }

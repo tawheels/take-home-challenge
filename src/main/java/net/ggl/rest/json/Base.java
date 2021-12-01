@@ -5,6 +5,15 @@ public class Base {
   String img;
   String name;
 
+  public Base() {
+  }
+  
+  public Base(Base base) {
+    this.id = base.id;
+    this.name = base.name;
+    this.img = base.img;
+  }
+  
   public String getId() {
     return id;
   }

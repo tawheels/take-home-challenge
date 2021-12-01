@@ -1,16 +1,18 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-root',
+  selector: 'body',
   template: `
   <mat-toolbar>
-     <span>Movies</span>
+     <div class="toolbar-title">Movies</div>
      <movie-search></movie-search>
   </mat-toolbar>
-  <router-outlet></router-outlet>
+  <div class="scroll">
+    <router-outlet></router-outlet>
+  </div>
   
 `,
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./movies.scss']
 })
 export class AppComponent {
   title = 'test';

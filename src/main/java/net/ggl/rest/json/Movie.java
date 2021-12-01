@@ -5,13 +5,22 @@ import java.util.ArrayList;
 public class Movie extends Base {
   String release;
 
-  ArrayList<String> starring;
+  ArrayList<String> starringIds;
+  ArrayList<Base> starring;
 
-  public ArrayList<String> getStarring() {
+  public ArrayList<String> getStarringIds() {
+    return starringIds;
+  }
+
+  public void setStarringIds(ArrayList<String> starringIds) {
+    this.starringIds = starringIds;
+  }
+
+  public ArrayList<Base> getStarring() {
     return starring;
   }
 
-  public void setStarring(ArrayList<String> starring) {
+  public void setStarring(ArrayList<Base> starring) {
     this.starring = starring;
   }
 

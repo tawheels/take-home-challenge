@@ -7,6 +7,8 @@ import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 
+import org.jboss.resteasy.annotations.jaxrs.PathParam;
+
 @Path("/service/movies")
 public class MovieResource {
 
@@ -15,6 +17,12 @@ public class MovieResource {
     return MoviesLoader.instance().getMovies();
   }
 
+  @GET
+  @Path("{id}")
+  public Movie get(@PathParam("id") String id){
+    return MoviesLoader.instance().getMovie(id);
+  }
+  
   @POST
   public List<Movie> add(Movie movie) {
 
