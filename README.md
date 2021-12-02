@@ -12,11 +12,18 @@ I used Lucene for the search.  Currently every query searches both the ID and th
 
 
 ## prerequisites
-Maven
+Java 11 - I am using AdoptOpenJDK 11.0.11
 
-Node
+Maven 3.6.3
 
-NPM
+Node v14.17.0
+
+NPM 8.1.0
+
+#### Optional 
+
+mongoDB Server 4.4.10
+
 
 ## Installing the application 
 - If you are using the Flat JSON persistence and have the dependecies installed then everything should run straight out of the box.
@@ -48,12 +55,15 @@ In a browser go to the url [http://localhost:8080](http://localhost:8080)
   - A search will be performed by pressing [enter] or [tab]
       - There is no message if the results are empty
       - There is very minimal error checking
+
+## Running the application
       
 To run the tests execute the shell script 
 
 ```shell script
 ./mvnw verify
 ```
+I did not include any tests of the angular app
 
 
 ## Libraries/concepts included
