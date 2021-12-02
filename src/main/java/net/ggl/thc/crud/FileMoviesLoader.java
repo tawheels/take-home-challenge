@@ -20,7 +20,6 @@ public class FileMoviesLoader extends MoviesLoader {
         InputStream fileStream = getClass().getResourceAsStream("/movies.json");
         movies = objectMapper.readValue(fileStream, Movies.class);
         fileStream.close();
-        reindex();
       }
       catch (Exception e) {
         e.printStackTrace();

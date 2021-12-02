@@ -4,7 +4,12 @@ import { Component } from '@angular/core';
   selector: 'body',
   template: `
   <mat-toolbar>
-     <div class="toolbar-title">Movies</div>
+     <div class="toolbar-title">Take Home Challenge</div>
+     <nav mat-tab-nav-bar>
+      <a mat-tab-link routerLink="/people" routerLineActive="active">People</a>
+      <a mat-tab-link routerLink="/movies" routerLineActive="active" >Movies</a>
+    </nav>
+
      <movie-search></movie-search>
   </mat-toolbar>
   <div class="scroll">

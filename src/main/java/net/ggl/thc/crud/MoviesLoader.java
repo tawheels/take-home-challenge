@@ -47,14 +47,14 @@ public abstract class MoviesLoader {
 
   public static MoviesLoader instance() {
     if (movieLoader == null) {
-      String loaderClass = ConfigProvider.getConfig().getValue("net.ggl.thc.crud.className", String.class); 
+      String loaderClass = ConfigProvider.getConfig().getValue("net.ggl.thc.crud.className", String.class).trim(); 
       try {
-        Class<?> initclass[] = new Class[0];
-        movieLoader = (MoviesLoader) Class.forName(loaderClass).getConstructor(initclass).newInstance();
+        movieLoader = (MoviesLoader) MoviesLoader.class.getClassLoader().loadClass(loaderClass).getDeclaredConstructor().newInstance();
+        movieLoader.reindex();
       }
       catch (Exception e) {
         log.error("Could not create instance of " + loaderClass, e);
-        movieLoader = new FileMoviesLoader();
+        // movieLoader = new FileMoviesLoader();
       }
     }
     return movieLoader;
@@ -62,14 +62,14 @@ public abstract class MoviesLoader {
 
   void indexBase(Base base, IndexWriter writer) throws Exception {
     Document doc = new Document();
-    doc.add(new StringField(idKey, base.getId(), Field.Store.YES));
+    doc.add(new TextField(idKey, base.getId(), Field.Store.YES));
     doc.add(new StringField(baseClassKey, base.getBaseClass(), Field.Store.YES));
     doc.add(new TextField(nameKey, base.getName(), Field.Store.YES));
     writer.addDocument(doc);
 
   }
 
-  void reindex() throws Exception {
+  protected void reindex() throws Exception {
     allBase = new HashMap<String, Base>();
     allMovie = new HashMap<String, Movie>();
     allPerson = new HashMap<String, Person>();
@@ -134,6 +134,21 @@ public abstract class MoviesLoader {
         Document doc = searcher.doc(hit.doc);
         Base thisBase = allBase.get((String) doc.get(idKey));
         if (thisBase != null && search.getBaseClass() != null && thisBase.getBaseClass() != null &&
+              (search.getBaseClass().equalsIgnoreCase("all") || search.getBaseClass().equalsIgnoreCase(thisBase.getBaseClass()))) {
+          searchResults.add(thisBase);
+        }
+        else {
+          log.error("Could not find Base for id " + doc.get(idKey));
+        }
+      }
+      parser = new SimpleQueryParser(analyzer, idKey);
+      query = parser.parse(searchQuery);
+      results = searcher.search(query, 100);
+      log.warn("Search results " + results.totalHits.value);
+      for (ScoreDoc hit : results.scoreDocs) {
+        Document doc = searcher.doc(hit.doc);
+        Base thisBase = allBase.get((String) doc.get(idKey));
+        if (thisBase != null && !searchResults.contains(thisBase) && search.getBaseClass() != null && thisBase.getBaseClass() != null &&
               (search.getBaseClass().equalsIgnoreCase("all") || search.getBaseClass().equalsIgnoreCase(thisBase.getBaseClass()))) {
           searchResults.add(thisBase);
         }

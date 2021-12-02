@@ -40,13 +40,12 @@ public class MongoMoviesLoader extends MoviesLoader {
 
     peopleCollection = database.getCollection("people", Person.class);
     moviesCollection = database.getCollection("movies", Movie.class);
-    reindex();
   }
   
   
 
   @Override
-  void reindex() throws Exception {
+  protected void reindex() throws Exception {
     movies = null;
     people = null;
     super.reindex();
