@@ -9,7 +9,6 @@ release.properties
 .project
 .classpath
 .settings/
-.mvn
 bin/
 /src/main/resources/META-INF
 
