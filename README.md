@@ -2,13 +2,14 @@
 
 I used this exercise as an excuse to try Quarkus [https://quarkus.io/](https://quarkus.io/). It claims to have a super small memory footprint and a very fast boot time.  In other words perfect for Microservices
 
-This project includes an angular web interface. I know that was not a requirement but in building a working application I found a bunch of things that I would want to solve if I was going to use Quarkus in production and the browser debug tools are very helpful in confirming results.
+This project includes an Angular web interface. I know that was not a requirement but in building a working application I found many things that I would want to improve if I was going to use Quarkus in production and the browser debug tools are very helpful in confirming results.  
 
 There are two different persistence mechanisms.
 1. Flat JSON file using Jackson POJO
-2. MongoDB - This requires a local mongodb 4.4 database, or I can provide the url to a shared DB in the mongodb cloud. I would need the IP addresses of any machines from which you will want to access mongo.
+2. MongoDB POJO - This configuration requires a local mongodb 4.4 database, or I can provide the uri to a shared DB in the mongodb cloud. I would need the IP addresses of any machines from which you will want to access mongo.
+The persistence mechanism is configured in the applications.propererties file.
 
-I used Lucene for the search.  Currently every query searches both the ID and the Name fields for a match.  You cannot explicitly request an ID. With the current data set this is only a problem if you wanted to search for Mickey Rourke [MR] by id.
+I used Apache Lucene for the search.  Currently every query searches both the ID and the Name fields for a match.  You cannot explicitly request an ID search. With the current data set this is only a problem if you wanted to search for Mickey Rourke [MR] by id.
 
 
 ## prerequisites
@@ -30,8 +31,9 @@ mongoDB Server 4.4.10
 
 - To run the mongo version
     
-    - Load the database dump into you mongo instance or request the cloud.mongodb URI 
-      Run mongorestore command in the this directory, if using a local database you should not need any parameters
+    - Load the database dump into you mongo instance or request the cloud.mongodb URI. 
+      
+      Run mongorestore in this directory, if using a local database you should not need any parameters.
     
     - modify the file src/main/resources/application.properties
       Place a \# in front of FileMovieLoader and remove the \# in front of MongoMoviesLoader
@@ -56,7 +58,7 @@ In a browser go to the url [http://localhost:8080](http://localhost:8080)
       - There is no message if the results are empty
       - There is very minimal error checking
 
-## Running the application
+## Testing the application
       
 To run the tests execute the shell script 
 
@@ -70,7 +72,7 @@ I did not include any tests of the angular app
 
 ##### RESTEasy JAX-R
 
-##### Lucene
+##### Apache Lucene
 
 ##### Jackson POJO 
 
