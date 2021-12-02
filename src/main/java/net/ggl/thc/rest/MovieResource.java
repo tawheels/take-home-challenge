@@ -16,26 +16,23 @@ import net.ggl.thc.pojo.Movie;
 public class MovieResource {
 
   @GET
-  public List<Movie> list() {
+  public List<Movie> list() throws Exception {
     return MoviesLoader.instance().getMovies();
   }
 
   @GET
   @Path("{id}")
-  public Movie get(@PathParam("id") String id){
+  public Movie get(@PathParam("id") String id) throws Exception {
     return MoviesLoader.instance().getMovie(id);
   }
   
   @POST
-  public List<Movie> add(Movie movie) {
-
-    list().add(movie);
-    return list();
+  public List<Movie> add(Movie movie) throws Exception {
+    return MoviesLoader.instance().addMovie(movie);
   }
 
   @DELETE
-  public List<Movie> delete(Movie movie) {
-    list().removeIf(existingMovie -> existingMovie.getName().contentEquals(movie.getName()));
-    return list();
+  public List<Movie> delete(Movie movie) throws Exception {
+    return MoviesLoader.instance().deleteMovie(movie);
   }
 }

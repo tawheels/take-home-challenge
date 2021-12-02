@@ -16,25 +16,23 @@ import net.ggl.thc.pojo.Person;
 public class PeopleResource {
 
   @GET
-  public List<Person> list() {
+  public List<Person> list() throws Exception {
     return MoviesLoader.instance().getPeople();
   }
 
   @GET
   @Path("{id}")
-  public Person get(@PathParam("id") String id){
+  public Person get(@PathParam("id") String id) throws Exception {
     return MoviesLoader.instance().getPerson(id);
   }
 
   @POST
-  public List<Person> add(Person person) {
-    list().add(person);
-    return list();
+  public List<Person> add(Person person) throws Exception {
+    return MoviesLoader.instance().addPerson(person);
   }
 
   @DELETE
-  public List<Person> delete(Person person) {
-    list().removeIf(existingPerson -> existingPerson.getName().contentEquals(person.getName()));
-    return list();
+  public List<Person> delete(Person person) throws Exception {
+    return MoviesLoader.instance().deletePerson(person);
   }
 }

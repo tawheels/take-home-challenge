@@ -11,7 +11,7 @@
       ]
     },
     {
-      "id": "TH",
+      "id": "THow",
       "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Terrence_Howard_-_Monte-Carlo.jpg/434px-Terrence_Howard_-_Monte-Carlo.jpg",
       "name": "Terrence Howard",
       "movieIds": [
@@ -92,7 +92,7 @@
       ]
     },
     {
-      "id": "DC",
+      "id": "DChea",
       "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Don_Cheadle_in_2019_at_the_public_party.jpg/640px-Don_Cheadle_in_2019_at_the_public_party.jpg",
       "name": "Don Cheadle",
       "movieIds": [
@@ -159,7 +159,7 @@
       ]
     },
     {
-      "id": "SS",
+      "id": "SSkar",
       "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Stellan_Skarsg%C3%A5rd_at_the_2017_Berlinalevds.jpg/496px-Stellan_Skarsg%C3%A5rd_at_the_2017_Berlinalevds.jpg",
       "name": "Stellan Skarsgård",
       "movieIds": [
@@ -281,7 +281,7 @@
       ]
     },
     {
-      "id": "ST",
+      "id": "STucci",
       "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Stanley_Tucci_2017_Berlinale.jpg/454px-Stanley_Tucci_2017_Berlinale.jpg",
       "name": "Stanley Tucci",
       "movieIds": [
@@ -297,7 +297,7 @@
       ]
     },
     {
-      "id": "MR",
+      "id": "MRuff",
       "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Mark_Ruffalo_%2836201774756%29_%28cropped%29.jpg/480px-Mark_Ruffalo_%2836201774756%29_%28cropped%29.jpg",
       "name": "Mark Ruffalo",
       "movieIds": [
@@ -313,7 +313,7 @@
       "img": "https://upload.wikimedia.org/wikipedia/en/0/02/Iron_Man_%282008_film%29_poster.jpg",
       "starringIds": [
         "RD",
-        "TH",
+        "THow",
         "JB",
         "ST",
         "GP"
@@ -341,7 +341,7 @@
       "starringIds": [
         "RD",
         "GP",
-        "DC",
+        "DChea",
         "SJ",
         "SR",
         "MR",
@@ -357,7 +357,7 @@
         "CH",
         "NP",
         "TH",
-        "SS",
+        "SSkar",
         "CF",
         "RS",
         "IE",
@@ -380,7 +380,7 @@
         "DC",
         "NM",
         "DL",
-        "ST"
+        "STucci"
       ]
     },
     {
@@ -391,7 +391,7 @@
       "starringIds": [
         "RD",
         "CE",
-        "MR",
+        "MRuff",
         "CH",
         "SJ",
         "JR",

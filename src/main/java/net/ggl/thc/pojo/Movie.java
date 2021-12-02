@@ -2,6 +2,8 @@ package net.ggl.thc.pojo;
 
 import java.util.ArrayList;
 
+import org.bson.codecs.pojo.annotations.BsonIgnore;
+
 public class Movie extends Base {
   String release;
 
@@ -16,10 +18,12 @@ public class Movie extends Base {
     this.starringIds = starringIds;
   }
 
+  @BsonIgnore
   public ArrayList<Base> getStarring() {
     return starring;
   }
 
+  @BsonIgnore
   public void setStarring(ArrayList<Base> starring) {
     this.starring = starring;
   }

@@ -1,6 +1,5 @@
 package net.ggl.thc.crud;
 
-import java.io.InputStream;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -23,35 +22,40 @@ import org.apache.lucene.search.Query;
 import org.apache.lucene.search.ScoreDoc;
 import org.apache.lucene.search.TopDocs;
 import org.apache.lucene.store.FSDirectory;
+import org.eclipse.microprofile.config.ConfigProvider;
 import org.jboss.logging.Logger;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 import net.ggl.thc.pojo.Base;
 import net.ggl.thc.pojo.Movie;
-import net.ggl.thc.pojo.Movies;
 import net.ggl.thc.pojo.Person;
 import net.ggl.thc.pojo.Search;
 
-public class MoviesLoader {
+public abstract class MoviesLoader {
   public static String idKey = "id";
   public static String baseClassKey = "baseClass";
   public static String nameKey = "name";
-  private static final Logger log = Logger.getLogger(MoviesLoader.class);
+  protected static final Logger log = Logger.getLogger(MoviesLoader.class);
+  HashMap<String, Base> allBase;
+  HashMap<String, Person> allPerson;
+  HashMap<String, Movie> allMovie;
 
-  Movies movies;
 
   public static MoviesLoader movieLoader;
   IndexSearcher searcher;
   Analyzer analyzer;
   String indexPath = "/tmp/lucene";
-  HashMap<String, Base> allBase;
-  HashMap<String, Person> allPerson;
-  HashMap<String, Movie> allMovie;
 
   public static MoviesLoader instance() {
     if (movieLoader == null) {
-      movieLoader = new MoviesLoader();
+      String loaderClass = ConfigProvider.getConfig().getValue("net.ggl.thc.crud.className", String.class); 
+      try {
+        Class<?> initclass[] = new Class[0];
+        movieLoader = (MoviesLoader) Class.forName(loaderClass).getConstructor(initclass).newInstance();
+      }
+      catch (Exception e) {
+        log.error("Could not create instance of " + loaderClass, e);
+        movieLoader = new FileMoviesLoader();
+      }
     }
     return movieLoader;
   }
@@ -61,62 +65,52 @@ public class MoviesLoader {
     doc.add(new StringField(idKey, base.getId(), Field.Store.YES));
     doc.add(new StringField(baseClassKey, base.getBaseClass(), Field.Store.YES));
     doc.add(new TextField(nameKey, base.getName(), Field.Store.YES));
-    allBase.put(base.getId(), base);
     writer.addDocument(doc);
 
   }
 
-  public MoviesLoader() {
-    if (movies == null) {
-      ObjectMapper objectMapper = new ObjectMapper();
+  void reindex() throws Exception {
+    allBase = new HashMap<String, Base>();
+    allMovie = new HashMap<String, Movie>();
+    allPerson = new HashMap<String, Person>();
 
-      try {
-        InputStream fileStream = getClass().getResourceAsStream("/movies.json");
-        movies = objectMapper.readValue(fileStream, Movies.class);
-        fileStream.close();
-        allBase = new HashMap<String, Base>();
-        allMovie = new HashMap<String, Movie>();
-        allPerson = new HashMap<String, Person>();
-
-        Analyzer analyzer = new StandardAnalyzer();
-        IndexWriterConfig iwc = new IndexWriterConfig(analyzer);
-        iwc.setOpenMode(OpenMode.CREATE);
-        IndexWriter writer = new IndexWriter(FSDirectory.open(Paths.get(indexPath)), iwc);
-        for (Movie movie : movies.getMovies()) {
-          indexBase(movie, writer);
-          allMovie.put(movie.getId(), movie);
-        }
-        for (Person person : movies.getPeople()) {
-          indexBase(person, writer);
-          allPerson.put(person.getId(), person);
-          if (person.getMovieIds() != null && person.getMovieIds().size() > 0) {
-            ArrayList<Base> starredInMovies = new ArrayList<Base>();
-            person.setMovies(starredInMovies);
-            for (String movieId : person.getMovieIds()) {
-              Movie starredInMovie = allMovie.get(movieId);
-              if (starredInMovie != null) {
-                starredInMovies.add(new Base(starredInMovie));
-              }
-            }
+    Analyzer analyzer = new StandardAnalyzer();
+    IndexWriterConfig iwc = new IndexWriterConfig(analyzer);
+    iwc.setOpenMode(OpenMode.CREATE);
+    IndexWriter writer = new IndexWriter(FSDirectory.open(Paths.get(indexPath)), iwc);
+    for (Movie movie : getMovies()) {
+      indexBase(movie, writer);
+      allMovie.put(movie.getId(), movie);
+      allBase.put(movie.getId(), movie);
+    }
+    for (Person person : getPeople()) {
+      indexBase(person, writer);
+      allPerson.put(person.getId(), person);
+      allBase.put(person.getId(), person);
+      if (person.getMovieIds() != null && person.getMovieIds().size() > 0) {
+        ArrayList<Base> starredInMovies = new ArrayList<Base>();
+        person.setMovies(starredInMovies);
+        for (String movieId : person.getMovieIds()) {
+          Movie starredInMovie = allMovie.get(movieId);
+          if (starredInMovie != null) {
+            starredInMovies.add(new Base(starredInMovie));
           }
         }
-        for (Movie movie : movies.getMovies()) {
-          ArrayList<Base> starring = new ArrayList<Base>();
-          movie.setStarring(starring);
-          for (String personId : movie.getStarringIds()) {
-            Person person = allPerson.get(personId);
-            if (person != null) {
-              starring.add(new Base(person));
-            }
-          }
-        }
-        writer.flush();
-        writer.close();
-      }
-      catch (Exception e) {
-        e.printStackTrace();
       }
     }
+    for (Movie movie : getMovies()) {
+      ArrayList<Base> starring = new ArrayList<Base>();
+      movie.setStarring(starring);
+      for (String personId : movie.getStarringIds()) {
+        Person person = allPerson.get(personId);
+        if (person != null) {
+          starring.add(new Base(person));
+        }
+      }
+    }
+    writer.flush();
+    writer.close();
+    
   }
 
   public List<Base> search(Search search) throws Exception {
@@ -127,7 +121,7 @@ public class MoviesLoader {
     }
     ArrayList<Base> searchResults = new ArrayList<Base>();
     String searchQuery = search.getQuery();
-    
+
     if (searchQuery != null && searchQuery.length() > 0) {
       if (!searchQuery.endsWith("*")) {
         searchQuery = searchQuery + "*";
@@ -151,19 +145,24 @@ public class MoviesLoader {
     return searchResults;
   }
 
-  public Movie getMovie(String id) {
-    return allMovie.get(id);
-  }
+  public abstract Movie getMovie(String id) throws Exception;
 
-  public List<Movie> getMovies() {
-    return movies.getMovies();
-  }
+  public abstract List<Movie> getMovies() throws Exception;
 
-  public Person getPerson(String id) {
-    return allPerson.get(id);
-  }
+  public abstract Movie updateMovie(Movie movie) throws Exception;
 
-  public List<Person> getPeople() {
-    return movies.getPeople();
-  }
+  public abstract List<Movie> addMovie(Movie movie) throws Exception;
+  
+  public abstract List<Movie> deleteMovie(Movie movie) throws Exception;
+  
+  public abstract Person getPerson(String id) throws Exception;
+
+  public abstract List<Person> getPeople() throws Exception;
+
+  public abstract Person updatePerson(Person person) throws Exception;
+
+  public abstract List<Person> addPerson(Person person) throws Exception;
+  
+  public abstract List<Person> deletePerson(Person person) throws Exception;
+
 }
