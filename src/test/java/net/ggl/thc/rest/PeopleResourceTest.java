@@ -7,15 +7,15 @@ import org.junit.jupiter.api.Test;
 import io.quarkus.test.junit.QuarkusTest;
 
 @QuarkusTest
-public class MovieResourceTest {
+public class PeopleResourceTest {
 
   @Test
-  public void testMovieEndpoint() {
+  public void testPeopleEndpoint() {
     given()
-          .when().get("/service/movies")
+          .when().get("/service/people")
           .then()
           .statusCode(200)
-          .body(JSONMatchers.hasJSONArrayOfLength(6));
+          .body(JSONMatchers.hasJSONArrayOfLength(37));
   }
 
 }
